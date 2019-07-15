@@ -1,0 +1,29 @@
+<% include partials/header %>
+    <div class="feedback-model-box">
+        <figure class="output-box">
+            <div class="output-text">
+                <% var i=1 %>
+                <% results.forEach(function(result) { %>
+                    <h2><%= i++ %>.<%- JSON.stringify(result).replace(/,/g,"<br>").replace('{','').replace(/"/g,' ').replace('}','') %></h2>
+                    <br>
+                <% }) %>
+            </div>
+        </figure>
+        <a href="/database">
+            <button class="enter-button-delete"> 
+                <span>
+                    <svg class="side-nav-icon">
+                        <use xlink:href="/img/sprite.svg#icon-erase"></use>
+                    </svg>
+                </span> 
+            </button> 
+        </a>                                     
+    </div>
+    <script>
+        var select = document.getElementById('7')
+        select.onload = load();
+        function load() {
+            select.classList.add('side-nav-item-active');
+        }
+    </script>  
+<% include partials/footer %>

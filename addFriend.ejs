@@ -1,0 +1,23 @@
+<% include partials/header %>
+<div class="friend-model-box">
+    <figure class="friend-box">
+        <div class="friend-box-content">
+            <blockquote class="friend-box-text">
+                <img src="<%= results[0].profilepic %>" alt="" class="friend-box-image"> 
+            </blockquote>
+            <blockquote class="friend-box-user">
+                    <%= results[0].username %>
+            </blockquote>
+        </div>
+        <form action="/friends/add/<%= results[0].username %>" method="POST">
+            <button class="enter-button-add">
+                <span>
+                <svg class="side-nav-icon">
+                    <use xlink:href="/img/sprite.svg#icon-add-user"></use>
+                </svg>
+                </span>
+            </button>
+        </form>
+    </figure>                                       
+</div>
+<% include partials/footer %>

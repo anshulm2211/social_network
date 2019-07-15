@@ -1,0 +1,119 @@
+<% include partials/header %>
+<% var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"],d = new Date() %>
+<% results[1].reverse().forEach(function(result) { %>
+    <div class="details">
+        <div class="description">
+            <img src="<%= result.url %>" alt="" class="description-image" id="demo">     
+            <p class="description-image-title"><%= result.title %></p>
+            <div class="description-title">
+                <!-- <img src="<%= result.profilepic %>" alt="" class="description-pic">
+                <div class="user-title-details">
+                    <h1 class="description-title-time"><%= JSON.stringify(result.curtime) %></h1>
+                    <h1 class="description-title-user"><%= result.username %></h1>
+                </div> -->
+                <figcaption class="review-user">
+                    <img src="<%= result.profilepic %>" alt="" class="review-photo">
+                    <div class="review-user-box">
+                        <!-- <p class="review-user-name"><%= result.username %></p> -->
+                        <p class="review-user-name"><%= result.username %></p>
+                        <!-- <p class="review-user-date"><%= JSON.stringify(result.curtime) %></p> <%= Math.abs(new Date().getHours()-result.curtime.getHours()) %>hr <%= Math.abs(new Date().getMinutes()-result.curtime.getMinutes()) %>min ago-->
+                        <p class="review-user-date"><%= result.curtime.getDate() %> <%= months[result.curtime.getMonth()] %>,<%= result.curtime.getFullYear() %></p>
+                    </div>
+                </figcaption>
+                <div class="buttons">
+                    <% if( result.username === username ) { %>
+                    <a href="/home/update/<%= result.uploadid %>">
+                        <button class="enter-button-delete margin-right"> 
+                            <span>
+                                <svg class="side-nav-icon">
+                                    <use xlink:href="/img/sprite.svg#icon-pencil"></use>
+                                </svg>
+                            </span> 
+                        </button>
+                    </a>
+                    <form action="/home/delete/<%= result.uploadid %>" method="POST">
+                        <button class="enter-button-delete"> 
+                            <span>
+                                <svg class="side-nav-icon">
+                                    <use xlink:href="/img/sprite.svg#icon-trash"></use>
+                                </svg>
+                            </span> 
+                        </button>
+                    </form>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <% var count=0 %>        
+        <div class="user-review-upper">
+            <form action="/home/comment/add/<%= result.uploadid %>" class="description-form" method="POST">
+                <input class="description-comment-box" type="text" placeholder="Comment here!" name="comment">
+                <button class="description-comment-button">
+                    <span class="description-comment-button-visible">
+                        <svg class="side-nav-icon">
+                            <use xlink:href="/img/sprite.svg#icon-chevron-thin-right"></use>
+                        </svg>
+                    </span>
+                    <span class="description-comment-button-invisible">
+                        <% results[0].forEach(function(result1){ if(result.uploadid === result1.uploadid) { count++ } })%>
+                        <%= count %>
+                    </span>
+                </button>
+            </form>
+            <div class="user-review">
+                <!-- <figure class="review">
+                    <blockquote class="review-text">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure pariatur modi voluptates veritatis incidunt saepe labore, illum temporibus iusto cum mollitia natus recusandae, obcaecati est quidem tempore. Voluptas, modi eius.                       
+                        <%= result.message %>
+                    </blockquote>
+                    <figcaption class="review-user">
+                        <img src="/img/user-3.jpg" alt="" class="review-photo">
+                        <div class="review-user-box">
+                            <p class="review-user-name"><%= result.username %></p>
+                            <p class="review-user-name">aditya</p>
+                            <p class="review-user-date">Sept 13th, 2015</p>
+                        </div>
+                    </figcaption>
+                </figure> -->
+                <% results[0].reverse().forEach(function(result1){ if(result.uploadid === result1.uploadid) { %>
+                <figure class="review">
+                    <blockquote class="review-text">
+                        <!-- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure pariatur modi voluptates veritatis incidunt saepe labore, illum temporibus iusto cum mollitia natus recusandae, obcaecati est quidem tempore. Voluptas, modi eius.                        -->
+                        <%= result1.message %>
+                    </blockquote>
+                    <figcaption class="review-user">
+                        <div class="comment-owner">
+                            <img src="<%= result1.profilepic %>" alt="" class="review-photo">
+                            <div class="review-user-box">
+                                <p class="review-user-name"><%= result1.username %></p>
+                                <!-- <p class="review-user-name">aditya</p> -->
+                                <p class="review-user-date"><%= result1.curtime.getDate() %> <%= months[result1.curtime.getMonth()] %>,<%= result1.curtime.getFullYear() %></p>
+                            </div>
+                        </div>
+                        <% if( username === result1.username ) { %>
+                            <form action="/home/comment/delete/<%= result1.commentid %>" method="POST">
+                                <button class="enter-button-delete-small"> 
+                                    <span>
+                                        <svg class="side-nav-icon">
+                                            <use xlink:href="/img/sprite.svg#icon-trash"></use>
+                                        </svg>
+                                    </span> 
+                                </button>
+                            </form>
+                        <% } %>
+                    </figcaption>
+                </figure>
+                <% }}) %>
+            </div>
+        </div>
+    </div> 
+    <script>
+        var select = document.getElementById('1')
+        select.onload = load();
+        function load() {
+            select.classList.add('side-nav-item-active');
+        }
+    </script>                  
+<% }) %>
+<% include partials/footer%>
+                

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+	<meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+	<link rel="stylesheet" href="css/register.css">
+	<link rel="stylesheet" href="css/icon.css">
+	<link rel="shortcut icon" type="img/png" href="img/smile.png">
+</head>
+<body>
+	<% var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"],d = new Date() %>
+	<a href="#register" class="">
+		<span class="home-scroll__text">Click To Register</span>
+		<span class="home-scroll__icon"></span>
+	</a>
+	<% if(message.length) { %>
+	<div class="flash-message">	
+		<p><%= message %></p>
+	</div>
+	<% } %>
+	<div class="header">
+		<div class="container">
+			<h1 class="heading-primary">
+				<span class="heading-primary-main">virtual</span>
+				<span class="heading-primary-sub">is where life happens</span>
+			</h1>
+		</div>
+	</div>
+	<!-- <div class="demo">
+		<div class="row">
+			<div class="col1of2">
+				col-1-of-2
+			</div>
+			<div class="col1of2">
+				col-1of2
+			</div>
+		</div>
+		<div class="row">
+			<div class="col1of3">
+				col-1-of-3
+			</div>
+			<div class="col1of3">
+				col-1-of-3
+			</div>
+			<div class="col1of3">
+				col-1-of-3
+			</div>
+		</div>
+		<div class="row">
+			<div class="col1of4">
+				col1of4
+			</div>
+			<div class="col1of4">
+				col-1-of-4
+			</div>
+			<div class="col2of4">
+				col-2of4
+			</div>
+		</div>
+	</div> -->
+	<main>
+		<section class="section-about">
+			<div class="u-center-text u-margin-bottom">
+				<h2 class="heading-secondry">
+					Welcome to .connect
+				</h2>
+			</div>
+			<div class="row">
+				<div class="col1of2">
+					<!-- <h3 class="heading-tertiary"></h3> -->
+					<p class="paragraph">Join yourself to the virtual world.
+						Upload your photos, comment on them, like them.
+						To the virtual world there has to be a opposite reality, reflect it on the virtual screen.</p>
+					<!-- <h3 class="heading-tertiary">Welcome to .connect</h3> -->
+					<p class="paragraph">Enter into a world where reality is bit virtual,<br>
+						Gain some followers, follow some of them.<br>
+						Might not be living in a big world,<br> 
+						make it little big with them.</p>
+					<!-- <a href="" class="btn-link">Learn More &rarr;</a> -->
+				</div>
+				<div class="col1of2">
+					<div class="composition">
+						<img src="img/s1.png" alt="" class="composition-photo composition-photo-1">
+						<img src="img/s2.png" alt="" class="composition-photo composition-photo-2">
+						<img src="img/s3.png" alt="" class="composition-photo composition-photo-3">
+					</div>
+				</div>
+			</div>
+		</section>	
+		<section class="section-features">
+			<div class="row">
+				<div class="col1of4">
+					<div class="feature-box" data-aos="fade-up">
+						<i class="feature-box-icon icon-basic-todolist-pen"></i>
+						<h3 class="heading-tertiary u-margin-bottom">To-Do List</h3>
+						<p class="feature-box-text">
+							Make your daily work list
+						</p>
+					</div>
+				</div>
+				<div class="col1of4">
+					<div class="feature-box">
+						<i class="feature-box-icon icon-basic-webpage-img-txt"></i>
+						<h3 class="heading-tertiary u-margin-bottom">Profile</h3>
+						<p class="feature-box-text">
+							With a profile pic have a unique username have followers
+						</p>
+					</div>
+				</div>
+				<div class="col1of4">
+					<div class="feature-box">
+						<i class="feature-box-icon icon-basic-upload"></i>
+						<h3 class="heading-tertiary u-margin-bottom">Uploads</h3>
+						<p class="feature-box-text">
+							Share your images comment on them like them
+						</p>
+					</div>
+				</div>
+				<div class="col1of4">
+					<div class="feature-box">
+						<i class="feature-box-icon icon-basic-rss"></i>
+						<h3 class="heading-tertiary u-margin-bottom">Follow</h3>
+						<p class="feature-box-text">
+							Follow other users or get followed by them have a look on their posts.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="section-stories">
+			<div class="u-center-text u-margin-bottom">
+				<h2 class="heading-secondry">
+					We Make People Genuinely Happy
+				</h2>
+			</div>
+			<div class="row">
+				<div class="story">
+					<% results.forEach(function(result) { %>
+					<figure class="review">
+						<blockquote class="review-text">
+							<%= result.feedback %>                       	
+						</blockquote>
+						<figcaption class="review-user">
+							<img src="<%= result.profilepic %>" alt="" class="review-photo">
+							<div class="review-user-box">
+								<p class="review-user-name"><%= result.username %></p>
+								<p class="review-user-date"><%= result.curdate.getDate() %> <%= months[result.curdate.getMonth()] %>,<%= result.curdate.getFullYear() %></p>
+							</div>
+						</figcaption>
+					</figure>
+					<% }) %>
+				</div>
+			</div>
+		</section>	
+		<section class="section-book" >
+			<div class="row">
+				<div class="book" id="register">
+					<div class="book-form">
+						<form action="/register" class="form" method="POST">
+							<div>
+								<h2 class="heading-secondry u-margin-top">
+									Register
+								</h2>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-input" placeholder="Username" autocomplete="off" id="username" required name="username">
+								<label for="username" class="form-label">Username</label>
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-input" placeholder="Email" autocomplete="off" id="email" required name="email">
+								<label for="email" class="form-label">Email</label>
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-input" placeholder="Password" autocomplete="off" id="password" required name="password">
+								<label for="password" class="form-label">Password</label>
+							</div>
+							<button class="btn btn-color btn-animated">here</button>
+							<!-- <h2 class="heading-secondry u-margin-top margin-left">
+								Or
+							</h2> -->
+							<!-- <a href="/login" class="btn-link">
+								Login
+							</a> -->
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>				
+	</main>
+	<footer class="footer">
+		<div class="row">
+			<!-- <div class="col1of2">
+				<div class="footer-navigation">	
+					<ul class="footer-list">
+						<li class="footer-item"><a href="" class="footer-link">company</a></li>
+						<li class="footer-item"><a href="" class="footer-link">contact</a></li>
+						<li class="footer-item"><a href="" class="footer-link">careers</a></li>
+						<li class="footer-item"><a href="" class="footer-link">privacy</a></li>
+						<li class="footer-item"><a href="" class="footer-link">terms</a></li>
+					</ul>
+				</div>
+			</div> -->
+			<div class="col1of2">
+				<div class="main-logo">
+					<h2 class="logo">
+						<a href="/login" class="logo-link">.connect</a>
+					</h2>
+				</div>
+				<p class="footer-copyright">
+					Created by  <a href="" class="footer-link"> Anshul </a>  and  <a href="" class="footer-link"> Aditya </a> 
+				</p>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

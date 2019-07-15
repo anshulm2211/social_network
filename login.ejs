@@ -1,0 +1,45 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+ 	<title>Login</title>
+ 	<link rel="stylesheet" type="text/css" href="/css/login.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+	<link rel="shortcut icon" type="img/png" href="img/smile.png">
+ </head>
+ <body>
+	<div class="header">
+			
+	 	<section class="section-login">
+	 		<div class="row">
+				<% if(message.length) { %>
+				<div class="flash-message">	
+					<p><%= message %></p>
+				</div>
+				<% } %>
+	 			<div class="login">
+	 				<div class="login-form">
+							<div class="u-center-text u-margin-bottom">
+									<h2 class="heading-secondary logo">
+										<a href="/register" class="logo-link">.connect</a>
+									</h2>
+								 </div>
+	 					<form action="/login" class="from" method="POST">
+		 					<div class="form_group">
+		 						<label for="username" class="form_label">Username</label>
+		 						<input type="text" class="form_input" id="username" required name="username">
+		 					</div>
+	 						<div class="form_group">
+	 							<label for="password" class="form_label">Password</label>
+		 						<input type="password" class="form_input" id="password" required name="password">
+	 						</div>
+	 						<div class="form_group">
+	 							<button class="btn btn-color btn-animated">Login</button>
+	 						</div>
+	 					</form>
+	 				</div>
+	 			</div>
+	 		</div>
+	 	</section>
+	</div>
+ </body>
+ </html>

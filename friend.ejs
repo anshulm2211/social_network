@@ -1,0 +1,32 @@
+<% include partials/header %>
+<div class="friend-model-box">
+    <% results.forEach(function(result) { if(result.added != username ) { %>
+    <figure class="friend-box">
+        <div class="friend-box-content">
+            <blockquote class="friend-box-text">
+                <img src="<%= result.profilepic %>" alt="" class="friend-box-image"> 
+            </blockquote>
+            <blockquote class="friend-box-user">
+                <%= result.added %>
+            </blockquote>
+        </div>
+        <form action="/friends/delete/<%= result.friendid %>" method="POST">
+            <button class="enter-button-delete">
+                <span>
+                <svg class="side-nav-icon">
+                    <use xlink:href="/img/sprite.svg#icon-remove-user"></use>
+                </svg>
+                </span>
+            </button>
+        </form>
+    </figure> 
+    <% }}) %>                                      
+</div>
+<script>
+    var select = document.getElementById('4')
+    select.onload = load();
+    function load() {
+        select.classList.add('side-nav-item-active');
+    }
+</script>  
+<% include partials/footer %>

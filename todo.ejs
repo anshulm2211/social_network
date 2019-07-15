@@ -1,0 +1,50 @@
+<% include partials/header %>
+    <div class="model-box">
+        <!-- <figure class="box">
+            <form action="/home/todo" method="POST" class="box-text" id="todo-form">
+                <textarea name="message" class="todo-box" placeholder="Add Items"></textarea>
+                <button class="enter-button-add">
+                    <span>
+                    <svg class="side-nav-icon">
+                        <use xlink:href="/img/sprite.svg#icon-plus"></use>
+                    </svg>
+                    </span>
+                </button>
+            </form>
+        </figure> -->
+        <% results.forEach(function(result) { %>
+            <figure class="box">
+                <blockquote class="box-text">
+                    <%= result.message %>                       
+                </blockquote>
+                <form action="/todo/<%= result.id %>" method="POST">
+                <!-- <a href="/home/todo/<%= result.id %>"> -->
+                    <button class="enter-button-delete">
+                        <span>
+                            <svg class="side-nav-icon">
+                                <use xlink:href="/img/sprite.svg#icon-trash"></use>
+                            </svg>
+                        </span>    
+                    </button>
+                <!-- </a> -->
+                </form>
+            </figure> 
+        <% }) %>  
+        <a href="/createTodo">
+            <button class="enter-button-add"> 
+                <span>
+                <svg class="side-nav-icon">
+                    <use xlink:href="/img/sprite.svg#icon-plus"></use>
+                </svg>
+                </span> 
+            </button>
+        </a>                        
+    </div>
+    <script>
+        var select = document.getElementById('5')
+        select.onload = load();
+        function load() {
+            select.classList.add('side-nav-item-active');
+        }
+    </script>  
+<% include partials/footer %>

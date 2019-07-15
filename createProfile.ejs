@@ -1,0 +1,42 @@
+<% include partials/header %>
+                    <div class="profile-container">
+                        <p class="label">Edit Profile</p>
+                        <div class="profile-container-content">
+                            <div class="profile-container-content-heading">
+                                <p>Full Name</p>
+                                <p>Profile Pic</p>
+                                <p>Phone</p>
+                                <p>Address</p>
+                                <!-- <p>Email</p> -->
+                                <p>Gender</p>
+                                <p>Place Born</p>
+                                <p>Date Born</p>
+                                <p>Job</p>
+                                <p>Institution</p>
+                            </div>
+                            <div class="profile-container-content-details">
+                                <form action="/profile/edit" method="POST">
+                                    <input class="profile-input" type="text" name="fullname" placeholder="Full Name" required>
+                                    <input class="profile-input" type="text" name="profilepic" placeholder="Url" value="/img/male-icon.png">
+                                    <input class="profile-input" id="number" onblur="check()" type="text" name="phone" placeholder="Phone" required>
+                                    <input class="profile-input" type="text" name="address" placeholder="Address" required>
+                                    <!-- <input class="profile-input" type="text" name="email" placeholder="Email" required> -->
+                                    <input class="profile-input" type="text" name="gender" placeholder="Gender" required>
+                                    <input class="profile-input" type="text" name="placeborn" placeholder="Place Born" required>
+                                    <input class="profile-input" type="date" name="dateborn" placeholder="Date Born" required>
+                                    <input class="profile-input" type="text" name="job" placeholder="Job" required>
+                                    <input class="profile-input" type="text" name="institution" placeholder="Institution" required>
+                                    <br>
+                                    <button class="button"><span>Save </span></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        var select = document.getElementById('3')
+                        select.onload = load();
+                        function load() {
+                            select.classList.add('side-nav-item-active');
+                        }
+                    </script>  
+<% include partials/footer %> 

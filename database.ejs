@@ -1,0 +1,32 @@
+<% include partials/header %>
+    <div class="feedback-model-box">
+        <figure class="feedback-box">
+                <form action="/database/sp/output" method="POST">
+                    <button name="table" value="register" class="enter-button-add">Register Table</button>
+                    <button name="table" value="profiles" class="enter-button-add">Profiles Table</button>
+                    <button name="table" value="comments" class="enter-button-add">Comments Table</button>
+                    <button name="table" value="todo" class="enter-button-add">Todo-List Table</button>
+                    <button name="table" value="feedback" class="enter-button-add">Feedback Table</button>
+                    <button name="table" value="friends" class="enter-button-add">Friends Table</button>
+                    <button name="table" value="uploads" class="enter-button-add">Uploads Table</button>
+                </form>
+                <form action="/database/output" id="feedback-form" method="POST">
+                    <textarea name="query" class="feedback-box-text" placeholder="Enter your Query!" required></textarea>
+                    <button class="enter-button-add">
+                        <span>
+                        <svg class="side-nav-icon">
+                            <use xlink:href="/img/sprite.svg#icon-calendar"></use>
+                        </svg>
+                        </span>
+                    </button>
+                </form>
+        </figure>                                      
+    </div>
+    <script>
+        var select = document.getElementById('7')
+        select.onload = load();
+        function load() {
+            select.classList.add('side-nav-item-active');
+        }
+    </script>  
+<% include partials/footer %>

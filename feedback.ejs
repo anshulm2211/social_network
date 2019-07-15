@@ -1,0 +1,23 @@
+<% include partials/header %>
+    <div class="feedback-model-box">
+        <figure class="feedback-box">
+                <form action="/feedback" id="feedback-form" method="POST">
+                    <textarea name="feedback" class="feedback-box-text" placeholder="Your Feedback!" required></textarea>
+                    <button class="enter-button-add">
+                        <span>
+                        <svg class="side-nav-icon">
+                            <use xlink:href="/img/sprite.svg#icon-heart"></use>
+                        </svg>
+                        </span>
+                    </button>
+                </form>
+        </figure>                                      
+    </div>
+    <script>
+        var select = document.getElementById('6')
+        select.onload = load();
+        function load() {
+            select.classList.add('side-nav-item-active');
+        }
+    </script>  
+<% include partials/footer %>

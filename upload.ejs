@@ -1,0 +1,27 @@
+<% include partials/header %>
+    <div class="profile-container">
+        <p class="label">Upload</p>
+        <div class="profile-container-content">
+            <div class="profile-container-content-heading">
+                <p> Post Title</p>
+                <p>Url</p>
+            </div>
+            <div class="profile-container-content-details">
+                <form action="/upload" method="POST">
+                    <input type="text" class="profile-input" name="title" placeholder="Title" required>
+                    <input type="text" class="profile-input" name="url" placeholder="Url" required>
+                    <br>
+                    <button class="button"><span>Post </span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var select = document.getElementById('2')
+        select.onload = load();
+        function load() {
+            select.classList.add('side-nav-item-active');
+        }
+    </script>  
+<% include partials/footer %>
+
